@@ -1,7 +1,8 @@
 <?php
+$title = 'Todo List';
 include 'header.php';
 
-echo 'Ici sont mis les taches qu\'il reste à faire sur le site';
+echo '<p>Ici sont mis les taches qu\'il reste à faire sur le site</p>';
 
 include 'footer.php';
 ?>
