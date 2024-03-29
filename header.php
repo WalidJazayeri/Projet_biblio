@@ -13,7 +13,7 @@ echo '<!doctype html>
 <h1 class="h1">'.$title.'</h1>
 <hr>
 <a href="index.php">Accueil</a>
-<a href="list.php">Liste des livres</a>
+<a href="list_book.php">Liste des livres</a>
 <div>
     <a href="todo.php">Todo List</a>
 </div>';
