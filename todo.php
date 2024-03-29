@@ -13,6 +13,7 @@ echo '
     <li>Ajout d\'un systeme d\'authentification</li>
     <li>Styliser le site pour le rendre "MAGNIFIQUE ma chéri"</li>
     <li>Optimisation du code (faire des fonctions notament car la tout est en procédural)</li>
+    <li>Gerer la sécurité dans les formulaires</li>
 </ul>';
 
 include 'footer.php';
