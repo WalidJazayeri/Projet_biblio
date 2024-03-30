@@ -1,7 +1,6 @@
 <?php
 $title = 'Confirmation de création du livre';
 include 'header.php';
-var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['book_name']) )
 {
@@ -23,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['book_name']) )
     $statement->bindValue(':authorprotected', $author_id, \PDO::PARAM_INT);
     $statement->execute();
     echo "<p>Livre crée (redirection en cours...)</p>";
-    header('refresh:3;url=list_book.php');
+    header('refresh:3;url=list_books.php');
 }
 
 
