@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $title = 'Confirmation de modification du livre';
 include 'header.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['book_name']) )
@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['book_name']) )
     $statement->execute();
     echo "<p>Livre modifié (redirection en cours...)</p>";
     header('refresh:3;url=list_books.php');
+    session_destroy();
 }
 
 

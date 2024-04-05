@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $title = 'Modifier un livre';
 include './header.php';
 
