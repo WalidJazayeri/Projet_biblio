@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id']) )
 {
     $idBook = $_GET['id'];
     $query = "  DELETE FROM book AS b
-                WHERE b.id = :idprotege";
+                WHERE book.id = :idprotege";
     $statement = $pdo->prepare($query);
     $statement->bindValue(':idprotege', $idBook, \PDO::PARAM_INT);
     $statement->execute();
