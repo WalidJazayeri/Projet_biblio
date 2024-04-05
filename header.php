@@ -11,6 +11,7 @@ echo '<!doctype html>
   </head>
 
 <body>
+TEST
 <h1 class="h1">'.$title.'</h1>
 <hr>
 <a href="index.php">Accueil</a>
