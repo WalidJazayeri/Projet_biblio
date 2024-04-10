@@ -18,7 +18,6 @@ echo '<!doctype html>
 <a href="list_authors.php">Liste des auteurs</a>
 <div>
     <a href="todo.php">Todo List</a>
-    <h1>SALUT ALAIN</h1>
 </div>';
 
 require_once 'connec.php';
