@@ -22,5 +22,7 @@ echo '<!doctype html>
 
 require_once 'connec.php';
 $pdo = new \PDO(DSN, USER, PASS);
-echo 'test';
+
 ?>
+
+TEST
