@@ -15,8 +15,8 @@ echo '<!doctype html>
 <hr>
 <a href="index.php">Accueil</a>
 <a href="list_books.php">Liste des livres</a>
-<a href="list_authors.php">Liste des auteurs</a>';
-
+<a href="list_authors.php">Liste des auteurs</a>
+<a href="todo.php">Todo List</a>';
 require_once 'connec.php';
 $pdo = new \PDO(DSN, USER, PASS);
 
