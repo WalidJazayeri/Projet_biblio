@@ -13,8 +13,7 @@ echo '<!doctype html>
 <body>
 <h1 class="h1">'.$title.'</h1>
 <hr>
-<a href="index.php">Accueil</a>
-<a href="list_books.php">Liste des livres</a>
+<a href="index.php">Liste des livres</a>
 <a href="list_authors.php">Liste des auteurs</a>
 <a href="todo.php">Todo List</a>';
 require_once 'connec.php';
