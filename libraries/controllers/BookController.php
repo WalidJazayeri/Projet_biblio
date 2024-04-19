@@ -8,7 +8,7 @@ class BookController
     public function index(){
         //Récupération des données
         $bookModel = new \Models\Book();
-        $books = $bookModel->findAllBook();
+        $books = $bookModel->findAll();
 
         //Affichage
         $pageTitle = "Liste des livres";

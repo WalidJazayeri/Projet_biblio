@@ -3,7 +3,7 @@ namespace Models;
 require_once './libraries/utils/Database.php';
 class Book
 {
-    public function findAllBook()
+    public function findAll()
     {
         $pdo = \Utils\Database::getPdo();
         $query = "SELECT * FROM book";
