@@ -16,7 +16,22 @@ class BookController
     }
 
     public function show(){
+        $bookModel = new \Models\Book();
+        $book_id = null;
 
+        if(!empty($_GET['id']) && ctype_digit($_GET['id']))
+        {
+            $book_id = $_GET['id'];
+        }
+
+        if (!$book_id){
+            die('Vous devez préciser un paramètre `id` dans l\'URL');
+        }
+
+        $book = $bookModel->find($book_id);
+
+        $pageTitle = 'Livre';
+        \Utils\Renderer::render('details_book', compact('pageTitle', 'book', 'book_id'));
     }
 }
 ?>
