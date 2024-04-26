@@ -2,6 +2,7 @@
 namespace Controllers;
 require_once './libraries/models/Book.php';
 require_once './libraries/utils/Renderer.php';
+require_once './libraries/utils/Http.php';
 
 class BookController
 {
@@ -32,6 +33,32 @@ class BookController
 
         $pageTitle = 'Livre';
         \Utils\Renderer::render('details_book', compact('pageTitle', 'book', 'book_id'));
+    }
+
+    public function delete(){
+        $bookModel = new \Models\Book();
+
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+        }
+
+        $id = $_GET['id'];
+
+        /**
+         * 3. Vérification que l'article existe bel et bien
+         */
+
+         $book = $bookModel->find($id);
+         if (!$book) {
+             die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
+         }
+
+         /**
+         * 4. Réelle suppression de l'article
+         */
+        $bookModel->delete($id);
+
+        \Utils\Http::redirect("index.php");
     }
 }
 ?>
