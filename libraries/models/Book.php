@@ -1,17 +1,9 @@
 <?php
 namespace Models;
-require_once './libraries/utils/Database.php';
-class Book
+require_once './libraries/models/Model.php';
+class Book extends Model
 {
-    public function findAll()
-    {
-        $pdo = \Utils\Database::getPdo();
-        $query = "SELECT * FROM book";
-        $statement = $pdo->query($query);
-        $books = $statement->fetchAll();
-        return $books;
-    }
-
+    protected $table = 'book';
     public function find(int $id)
     {
         $pdo = \Utils\Database::getPdo();

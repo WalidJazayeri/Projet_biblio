@@ -17,6 +17,6 @@
     <a href="delete_book.php?id=<?= $book_id ?>">Supprimer</a>
 </button>
 <button>
-    <a href="modify_book.php?<?= 'id='.$book_id.'&book_name='.urlencode($book['book_name']).'&publication_date='.$book['publication_date'].'&category='.$book['category'].'&author='.$book['author'].'' ?>">Modifier</a>
+    <a href="modify_book.php?<?= 'id='.$book_id ?>">Modifier</a>
 </button>
 

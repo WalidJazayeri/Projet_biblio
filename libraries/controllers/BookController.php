@@ -60,5 +60,24 @@ class BookController
 
         \Utils\Http::redirect("index.php");
     }
+
+    public function showModfifyForm(){
+        $bookModel = new \Models\Book();
+
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+        }
+
+        $id = $_GET['id'];
+
+        /**
+         * 3. Vérification que l'article existe bel et bien
+         */
+
+         $book = $bookModel->find($id);
+         if (!$book) {
+             die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
+         }
+    }
 }
 ?>
