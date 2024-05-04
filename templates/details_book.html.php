@@ -17,6 +17,6 @@
     <a href="delete_book.php?id=<?= $book_id ?>">Supprimer</a>
 </button>
 <button>
-    <a href="modify_book.php?<?= 'id='.$book_id ?>">Modifier</a>
+    <a href="modify_book_form.php?id=<?= $book_id ?>">Modifier</a>
 </button>
 
