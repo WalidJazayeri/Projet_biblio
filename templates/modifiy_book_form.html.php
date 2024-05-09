@@ -9,7 +9,7 @@
     </div>
     <div>
         <label for="">Catégorie</label>
-        <select name="category_id" id=""> ';
+        <select name="category_id" id="">
             <?php foreach ($categories as $categorie) : ?>
                 <option value="<?= $categorie['id'] ?>"><?= $categorie['name'] ?></option>
             <?php endforeach ?>
@@ -17,12 +17,9 @@
     </div>
     <div>
         <label for="">Auteur</label>
-        <select name="author_id" id=""> ';
+        <select name="author_id" id="">
             <?php foreach ($authors as $author) : ?>
-                    <?php
-                        $current_author_id == $author['id'] ? $selected = 'selected' : $selected = '' ;
-                    ?>
-                    <option value="<?= $author['id'] ?>"<?= $selected ?>><?= $author['name'] ?></option>
+                    <option value="<?= $author['id'] ?>"<?= $selected($current_author_id, $author['id']) ?>><?= $author['name'] ?></option>
             <?php endforeach ?>
         </select>
     </div>
