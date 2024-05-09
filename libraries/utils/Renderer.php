@@ -14,10 +14,10 @@ class Renderer
         extract($variables);
 
         ob_start();
-        require(__DIR__.'/../../templates/'.$path.'.html.php');
+        require('templates/'. $path .'.html.php');
         $pageContent = ob_get_clean();
 
-        require(__DIR__.'/../../templates/layout.html.php');
+        require('templates/layout.html.php');
     }
 }
 ?>

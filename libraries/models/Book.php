@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-require_once __DIR__.'/../models/Model.php';
+require_once './libraries/models/Model.php';
 class Book extends Model
 {
     protected $table = 'book';

@@ -1,11 +1,11 @@
 <?php
 namespace Controllers;
-require_once __DIR__.'/../models/Book.php';
-require_once __DIR__.'/../models/Author.php';
-require_once __DIR__.'/../models/Categorie.php';
-require_once __DIR__.'/../utils/Renderer.php';
-require_once __DIR__.'/../utils/Http.php';
-require_once __DIR__.'/../utils/Session.php';
+require_once './libraries/models/Book.php';
+require_once './libraries/models/Author.php';
+require_once './libraries/models/Categorie.php';
+require_once './libraries/utils/Renderer.php';
+require_once './libraries/utils/Http.php';
+require_once './libraries/utils/Session.php';
 
 class BookController
 {
