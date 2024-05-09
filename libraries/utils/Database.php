@@ -3,7 +3,7 @@ namespace Utils;
 
 use PDO;
 
-require_once './libraries/connec.php';
+require_once __DIR__.'/../connec.php';
 
 class Database
 {

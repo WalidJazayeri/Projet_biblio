@@ -1,6 +1,6 @@
 <?php
 namespace Models;
-require_once './libraries/utils/Database.php';
+require_once __DIR__.'/../utils/Database.php';
 abstract class Model
 {
     protected $pdo;
