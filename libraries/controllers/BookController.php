@@ -101,7 +101,7 @@ class BookController
         $categories = $categoryModel->findAll();
 
         /**
-         * Démarage d'une session
+         * Démarage d'une session et récupération de l'id
          */
         \Utils\Session::init_php_session();
         $_SESSION['book_id'] = $id;
@@ -117,11 +117,13 @@ class BookController
     public function edit(){
         $bookModel = new \Models\Book();
 
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
-        }
+        /**
+         * Ouverture et fermeture d'une session pour récupéré l'id du livre
+         */
+        \Utils\Session::init_php_session();
+        $id = $_SESSION['book_id'];
+        \Utils\Session::clean_php_session();
 
-        $id = $_POST['id'];
 
         /**
          * 3. Vérification que l'article existe bel et bien et recupération du livre
@@ -135,17 +137,21 @@ class BookController
         /**
          * Récupérer les données saisi en POST
          */
-        $id = $_SESSION['book_id'];
         $book_name = $_POST['name'];
         $publication_date = $_POST['publication_date'];
         $category_id = $_POST['category_id'];
         $author_id = $_POST['author_id'];
 
-
          /**
           * Utiliser le model pour éditer les données
           */
           $bookModel->edit($id, $book_name, $publication_date, $category_id, $author_id);
+
+          /**
+           * Redirection a l'acceuil
+           */
+        \Utils\Http::redirect("index.php");
+
     }
 }
 ?>
