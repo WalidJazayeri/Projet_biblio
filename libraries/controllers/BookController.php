@@ -27,13 +27,23 @@ class BookController
         {
             $book_id = $_GET['id'];
         }
-
+        /**
+         * Verification pour savoir si le livre existe bien
+         */
         if (!$book_id){
             die('Vous devez préciser un paramètre `id` dans l\'URL');
         }
 
         $book = $bookModel->findWithJointure($book_id);
 
+        if(!$book)
+        {
+            die("Aucun livre n'éxiste avec l'id préciser dans l'URL");
+        }
+
+        /**
+         * Affichage
+         */
         $pageTitle = 'Livre';
         \Utils\Renderer::render('details_book', compact('pageTitle', 'book', 'book_id'));
     }
@@ -48,7 +58,7 @@ class BookController
         $id = $_GET['id'];
 
         /**
-         * 3. Vérification que l'article existe bel et bien
+         * 3. Vérification que le livre existe bel et bien
          */
 
          $book = $bookModel->find($id);
