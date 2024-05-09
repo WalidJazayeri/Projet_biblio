@@ -99,7 +99,8 @@ class BookController
         */
         $authors = $authorModel->findAll();
         $categories = $categoryModel->findAll();
-
+        $selected = '';
+        $current_author_id = $book['author_id'];
         /**
          * Démarage d'une session et récupération de l'id
          */
@@ -110,7 +111,7 @@ class BookController
         * Affichage
         */
         $pageTitle = 'Modification du livre';
-        \Utils\Renderer::render('modifiy_book_form', compact('pageTitle', 'book', 'authors', 'categories', 'id', 'current_author_id'));
+        \Utils\Renderer::render('modifiy_book_form', compact('pageTitle', 'book', 'authors', 'categories', 'id', 'current_author_id', 'selected'));
     }
 
     public function edit(){

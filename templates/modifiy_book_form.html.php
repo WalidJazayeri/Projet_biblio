@@ -19,7 +19,10 @@
         <label for="">Auteur</label>
         <select name="author_id" id=""> ';
             <?php foreach ($authors as $author) : ?>
-                    <option value="<?= $author['id'] ?>"><?= $author['name'] ?></option>
+                    <?php
+                        $current_author_id == $author['id'] ? $selected = 'selected' : $selected = '' ;
+                    ?>
+                    <option value="<?= $author['id'] ?>"<?= $selected ?>><?= $author['name'] ?></option>
             <?php endforeach ?>
         </select>
     </div>
