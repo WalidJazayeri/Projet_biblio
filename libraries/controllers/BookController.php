@@ -77,7 +77,7 @@ class BookController
     public function showModfifyForm(){
         $bookModel = new \Models\Book();
         $authorModel = new \Models\Author();
-        $categoryModel = new \Models\Categorie;
+        $categoryModel = new \Models\Categorie();
 
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ?! Tu n'as pas précisé l'id de l'article !");
@@ -105,13 +105,12 @@ class BookController
          */
         \Utils\Session::init_php_session();
         $_SESSION['book_id'] = $id;
-        var_dump($_SESSION['book_id']);
 
         /**
         * Affichage
         */
         $pageTitle = 'Modification du livre';
-        \Utils\Renderer::render('modifiy_book_form', compact('pageTitle', 'book', 'authors', 'categories', 'id'));
+        \Utils\Renderer::render('modifiy_book_form', compact('pageTitle', 'book', 'authors', 'categories', 'id', 'current_author_id'));
     }
 
     public function edit(){
