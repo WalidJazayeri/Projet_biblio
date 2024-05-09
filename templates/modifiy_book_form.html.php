@@ -1,7 +1,7 @@
-<form action="confirm_modify_book.php" method="post">
+<form action="modify_book.php" method="post">
     <div>
         <label for="">Nom du livre</label>
-        <input type="text" name="book_name" value="<?= $book['name'] ?>">
+        <input type="text" name="name" value="<?= $book['name'] ?>">
     </div>
     <div>
         <label for="">Date de publication</label>

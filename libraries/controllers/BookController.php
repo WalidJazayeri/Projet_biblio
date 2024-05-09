@@ -5,6 +5,7 @@ require_once './libraries/models/Author.php';
 require_once './libraries/models/Categorie.php';
 require_once './libraries/utils/Renderer.php';
 require_once './libraries/utils/Http.php';
+require_once './libraries/utils/Session.php';
 
 class BookController
 {
@@ -90,10 +91,51 @@ class BookController
         $categories = $categoryModel->findAll();
 
         /**
+         * Démarage d'une session
+         */
+        \Utils\Session::init_php_session();
+        $_SESSION['book_id'] = $id;
+        var_dump($_SESSION['book_id']);
+
+        /**
         * Affichage
         */
         $pageTitle = 'Modification du livre';
         \Utils\Renderer::render('modifiy_book_form', compact('pageTitle', 'book', 'authors', 'categories', 'id'));
+    }
+
+    public function edit(){
+        $bookModel = new \Models\Book();
+
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+        }
+
+        $id = $_POST['id'];
+
+        /**
+         * 3. Vérification que l'article existe bel et bien et recupération du livre
+         */
+
+        $book = $bookModel->find($id);
+        if (!$book) {
+            die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
+        }
+
+        /**
+         * Récupérer les données saisi en POST
+         */
+        $id = $_SESSION['book_id'];
+        $book_name = $_POST['name'];
+        $publication_date = $_POST['publication_date'];
+        $category_id = $_POST['category_id'];
+        $author_id = $_POST['author_id'];
+
+
+         /**
+          * Utiliser le model pour éditer les données
+          */
+          $bookModel->edit($id, $book_name, $publication_date, $category_id, $author_id);
     }
 }
 ?>

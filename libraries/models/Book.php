@@ -27,5 +27,21 @@ class Book extends Model
         $statement->bindValue(':idprotege', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function edit(int $id, $book_name, $publication_date, $category_id, $author_id){
+        $query = "  UPDATE book
+            SET name = :nameprotected ,
+                publication_date = :publicationdateprotected,
+                category_id = :categoryprotected,
+                author_id = :authorprotected
+            WHERE book.id = :idprotected";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':idprotected', $id, \PDO::PARAM_INT);
+        $statement->bindValue(':nameprotected', $book_name, \PDO::PARAM_STR);
+        $statement->bindValue(':publicationdateprotected', $publication_date, \PDO::PARAM_STR);
+        $statement->bindValue(':categoryprotected', $category_id, \PDO::PARAM_INT);
+        $statement->bindValue(':authorprotected', $author_id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
 ?>
