@@ -7,12 +7,12 @@ require_once './libraries/utils/Renderer.php';
 require_once './libraries/utils/Http.php';
 require_once './libraries/utils/Session.php';
 
-class BookController
+class BookController extends Controller
 {
+    protected $modelName = \Models\Book::class;
+
     public function index(){
-        //Récupération des données
-        $bookModel = new \Models\Book();
-        $books = $bookModel->findAll();
+        $books = $this->model->findAll();
 
         //Affichage
         $pageTitle = "Liste des livres";
@@ -20,7 +20,6 @@ class BookController
     }
 
     public function show(){
-        $bookModel = new \Models\Book();
         $book_id = null;
 
         if(!empty($_GET['id']) && ctype_digit($_GET['id']))
@@ -34,7 +33,7 @@ class BookController
             die('Vous devez préciser un paramètre `id` dans l\'URL');
         }
 
-        $book = $bookModel->findWithJointure($book_id);
+        $book = $this->model->findWithJointure($book_id);
 
         if(!$book)
         {
@@ -49,7 +48,6 @@ class BookController
     }
 
     public function delete(){
-        $bookModel = new \Models\Book();
 
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ?! Tu n'as pas précisé l'id de l'article !");
@@ -61,7 +59,7 @@ class BookController
          * 3. Vérification que le livre existe bel et bien
          */
 
-         $book = $bookModel->find($id);
+         $book = $this->model->find($id);
          if (!$book) {
              die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
          }
@@ -69,13 +67,12 @@ class BookController
          /**
          * 4. Réelle suppression de l'article
          */
-        $bookModel->delete($id);
+        $this->model->delete($id);
 
         \Utils\Http::redirect("index.php");
     }
 
     public function showModfifyForm(){
-        $bookModel = new \Models\Book();
         $authorModel = new \Models\Author();
         $categoryModel = new \Models\Categorie();
 
@@ -89,7 +86,7 @@ class BookController
          * 3. Vérification que l'article existe bel et bien et recupération du livre
          */
 
-        $book = $bookModel->find($id);
+        $book = $this->model->find($id);
         if (!$book) {
             die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
@@ -127,7 +124,6 @@ class BookController
     }
 
     public function edit(){
-        $bookModel = new \Models\Book();
 
         /**
          * Ouverture et fermeture d'une session pour récupéré l'id du livre
@@ -141,7 +137,7 @@ class BookController
          * 3. Vérification que l'article existe bel et bien et recupération du livre
          */
 
-        $book = $bookModel->find($id);
+        $book = $this->model->find($id);
         if (!$book) {
             die("Le livre $id n'existe pas, vous ne pouvez donc pas le supprimer !");
         }
@@ -157,7 +153,7 @@ class BookController
          /**
           * Utiliser le model pour éditer les données
           */
-          $bookModel->edit($id, $book_name, $publication_date, $category_id, $author_id);
+          $this->model->edit($id, $book_name, $publication_date, $category_id, $author_id);
 
           /**
            * Redirection a l'acceuil
@@ -178,14 +174,13 @@ class BookController
     }
 
     public function add(){
-        $bookModel = new \Models\Book();
 
         $book_name = $_POST['name'];
         $publication_date = $_POST['publication_date'];
         $category_id = $_POST['category_id'];
         $author_id = $_POST['author_id'];
 
-        $bookModel->add($book_name, $publication_date, $category_id, $author_id);
+        $this->model->add($book_name, $publication_date, $category_id, $author_id);
 
         \Utils\Http::redirect("index.php");
     }
