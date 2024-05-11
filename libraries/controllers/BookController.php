@@ -1,5 +1,6 @@
 <?php
 namespace Controllers;
+require_once './libraries/controllers/Controller.php';
 require_once './libraries/models/Book.php';
 require_once './libraries/models/Author.php';
 require_once './libraries/models/Categorie.php';
