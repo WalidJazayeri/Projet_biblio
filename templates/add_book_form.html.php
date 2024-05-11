@@ -5,7 +5,7 @@
     </div>
     <div>
         <label for="publication_date">Date de publication</label>
-        <input type="date" name="publication_date" required>
+        <input type="text" name="publication_date" required placeholder="YYYY/MM/DD">
     </div>
     <div>
         <label for="category_id">Catégorie</label>
