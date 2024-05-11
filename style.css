@@ -7,3 +7,7 @@ td {
 th {
     border: 1px solid black;
 }
+
+.barrer {
+    text-decoration: line-through;
+}
