@@ -5,7 +5,7 @@
     </div>
     <div>
         <label for="">Date de publication</label>
-        <input type="text" name="publication_date" value="<?= $book['publication_date'] ?>" required placeholder="YYYY/MM/DD">
+        <input type="date" name="publication_date" value="<?= $book['publication_date'] ?>" required>
     </div>
     <div>
         <label for="">Catégorie</label>
