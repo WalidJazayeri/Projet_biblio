@@ -21,7 +21,7 @@ class AuthorController extends Controller
     public function delete(){
 
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+            die("Tu n'as pas précisé l'id de l'auteur !");
         }
 
         $id = $_GET['id'];
@@ -37,7 +37,7 @@ class AuthorController extends Controller
 
         $this->model->delete($id);
 
-        \Utils\Http::redirect("index.php?controller=author&task=index");
+        \Utils\Http::redirect("list_authors.php");
     }
 
     public function add_author_form(){

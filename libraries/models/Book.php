@@ -20,10 +20,9 @@ class Book extends Model
 
     public function delete(int $id): void
     {
-        $pdo = \Utils\Database::getPdo();
         $query = "  DELETE FROM book
                     WHERE book.id = :idprotege";
-        $statement = $pdo->prepare($query);
+        $statement = $this->pdo->prepare($query);
         $statement->bindValue(':idprotege', $id, \PDO::PARAM_INT);
         $statement->execute();
     }

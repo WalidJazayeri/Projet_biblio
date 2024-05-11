@@ -19,6 +19,15 @@ abstract class Model
         return $items;
     }
 
+    public function delete(int $id): void
+    {
+        $query = "  DELETE FROM {$this->table}
+                    WHERE {$this->table}.id = :idprotege";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':idprotege', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
     public function find(int $id){
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
 
