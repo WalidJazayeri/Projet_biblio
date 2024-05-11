@@ -2,7 +2,7 @@
 
 <hr>
 <div>
-    <button><a href="create_book.php">Ajouter un livre</a></button>
+    <button><a href="add_book_form.php">Ajouter un livre</a></button>
 </div>
 <ul>
     <?php foreach ($books as $book) : ?>

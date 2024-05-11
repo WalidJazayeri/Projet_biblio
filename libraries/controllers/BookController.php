@@ -165,5 +165,29 @@ class BookController
         \Utils\Http::redirect("index.php");
 
     }
+
+    public function showAddForm(){
+        $authorModel = new \Models\Author();
+        $categoryModel = new \Models\Categorie();
+
+        $authors = $authorModel->findAll();
+        $categories = $categoryModel->findAll();
+
+        $pageTitle = 'Ajout d\'un livre';
+        \Utils\Renderer::render('add_book_form', compact('pageTitle', 'authors', 'categories'));
+    }
+
+    public function add(){
+        $bookModel = new \Models\Book();
+
+        $book_name = $_POST['name'];
+        $publication_date = $_POST['publication_date'];
+        $category_id = $_POST['category_id'];
+        $author_id = $_POST['author_id'];
+
+        $bookModel->add($book_name, $publication_date, $category_id, $author_id);
+
+        \Utils\Http::redirect("index.php");
+    }
 }
 ?>

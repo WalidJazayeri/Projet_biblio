@@ -43,5 +43,16 @@ class Book extends Model
         $statement->bindValue(':authorprotected', $author_id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function add($book_name, $publication_date, $category_id, $author_id){
+        $query = "  INSERT INTO book (name, publication_date, category_id, author_id)
+                    VALUES (:nameprotected, :publicationdateprotected, :categoryprotected, :authorprotected)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':nameprotected', $book_name, \PDO::PARAM_STR);
+        $statement->bindValue(':publicationdateprotected', $publication_date, \PDO::PARAM_STR);
+        $statement->bindValue(':categoryprotected', $category_id, \PDO::PARAM_INT);
+        $statement->bindValue(':authorprotected', $author_id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
 ?>

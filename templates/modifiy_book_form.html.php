@@ -1,11 +1,11 @@
 <form action="modify_book.php" method="post">
     <div>
         <label for="">Nom du livre</label>
-        <input type="text" name="name" value="<?= $book['name'] ?>">
+        <input type="text" name="name" value="<?= $book['name'] ?>" required>
     </div>
     <div>
         <label for="">Date de publication</label>
-        <input type="text" name="publication_date" value="<?= $book['publication_date'] ?>">
+        <input type="text" name="publication_date" value="<?= $book['publication_date'] ?>" required placeholder="YYYY/MM/DD">
     </div>
     <div>
         <label for="">Catégorie</label>
