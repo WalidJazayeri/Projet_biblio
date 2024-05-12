@@ -56,4 +56,46 @@ class AuthorController extends Controller
 
         \Utils\Http::redirect("list_authors.php");
     }
+
+    public function edit_author_form(){
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Tu n'as pas précisé l'id de l'auteur !");
+        }
+
+        $id = $_GET['id'];
+
+        /**
+         * Démarage d'une session et récupération de l'id
+         */
+        \Utils\Session::init_php_session();
+        $_SESSION['author_id'] = $id;
+
+        $author = $this->model->find($id);
+
+        if (!$author) {
+            die("Aucun auteur n'a l'ID $id !");
+        }
+
+        $pageTitle = "Modifier l'auteur";
+        \Utils\Renderer::render('edit_author_form', compact('pageTitle', 'author'));
+    }
+
+    public function edit_author(){
+        if (empty($_POST['name'])) {
+            die("Le nom est obligatoire");
+        }
+
+        $author_name = $_POST['name'];
+
+        /**
+         * Démarage d'une session et récupération de l'id
+         */
+        \Utils\Session::init_php_session();
+        $id = $_SESSION['author_id'];
+        \Utils\Session::clean_php_session();
+
+        $this->model->edit($id, $author_name);
+
+        \Utils\Http::redirect("list_authors.php");
+    }
 }
